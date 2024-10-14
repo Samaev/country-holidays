@@ -6,7 +6,7 @@ import HolidayCard from "~/components/HolidayCard.vue";
 
 interface Country {
   name: string;
-  code: string; // Add other properties as needed
+  code: string;
 }
 
 interface Holiday {

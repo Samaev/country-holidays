@@ -7,7 +7,10 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "lint": "eslint --ext .js,.vue .",
+    "lintfix": "eslint --ext .js,.vue . --fix",
+    "prettier": "prettier --write ."
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
@@ -16,6 +19,12 @@
     "vue-router": "latest"
   },
   "devDependencies": {
+    "@nuxt/eslint-config": "^0.6.0",
+    "eslint": "^9.12.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-vue": "^9.29.0",
+    "prettier": "^3.3.3",
     "usebootstrap": "^3.5.69"
   }
 }

@@ -18,7 +18,7 @@ export const useRandomHolidays = async (countries: Country[]): Promise<PublicHol
     if (countries.length < 3) {
         throw new Error('Not enough countries');
     }
-
+    const { public: { URI_API } } = useRuntimeConfig();
     const randomIndices = new Set<number>();
     while (randomIndices.size < 3) {
         const randomIndex = Math.floor(Math.random() * countries.length);
@@ -31,7 +31,7 @@ export const useRandomHolidays = async (countries: Country[]): Promise<PublicHol
     const countryWidget = ref<PublicHoliday[]>([]); // Typing the ref as PublicHoliday array
 
     const requests = countryCodes.map(async (countryCode, index) => {
-        const response = await fetch(`https://date.nager.at/api/v3/NextPublicHolidays/${countryCode}`);
+        const response = await fetch(`${URI_API}/NextPublicHolidays/${countryCode}`);
         const data: PublicHoliday[] = await response.json(); // Type assertion
 
         return data && data.length ? { ...data[0], countryName: selectedCountries[index].name } : null;

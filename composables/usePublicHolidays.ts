@@ -9,7 +9,8 @@ export interface PublicHoliday {
     types: string[];
 }
 export const usePublicHolidays = async (year: number, countryCode: string): Promise<PublicHoliday[]> => {
-    const url = `https://date.nager.at/api/v3/PublicHolidays/${year}/${countryCode}`;
+    const { public: { URI_API } } = useRuntimeConfig();
+    const url = `${URI_API}/PublicHolidays/${year}/${countryCode}`;
 
     try {
         return await $fetch<PublicHoliday[]>(url);

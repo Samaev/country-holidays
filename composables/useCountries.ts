@@ -3,7 +3,8 @@ export interface Country {
     name: string;
 }
 export const useCountries = async (): Promise<Country[]> => {
-    const { data, error } = await useFetch<Country[]>('https://date.nager.at/api/v3/AvailableCountries');
+    const { public: { URI_API } } = useRuntimeConfig();
+    const { data, error } = await useFetch<Country[]>(URI_API+'/AvailableCountries');
 
     if (error.value) {
         throw new Error('Error fetching countries');

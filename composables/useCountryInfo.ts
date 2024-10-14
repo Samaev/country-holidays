@@ -14,8 +14,9 @@ export interface CountryInfo {
 }
 
 export async function useCountryInfo(code: string): Promise<CountryInfo | null> {
+    const { public: { URI_API } } = useRuntimeConfig();
     try {
-        const response = await fetch(`https://date.nager.at/api/v3/CountryInfo/${code}`);
+        const response = await fetch(URI_API+`/CountryInfo/${code}`);
 
         if (!response.ok) {
             throw new Error(`Error fetching country info: ${response.statusText}`);

@@ -22,9 +22,14 @@ const searchQuery = ref<string>('');
 const error = ref<string | null>(null);
 
 const filteredCountries = computed(() => {
-  return countries.value.filter(country => {
-    return country.name.toLowerCase().includes(searchQuery.value.toLowerCase());
-  });
+  const query = searchQuery.value.toLowerCase();
+  const isValidQuery = /^[a-zA-Z]+$/.test(query);
+
+  return isValidQuery
+      ? countries.value.filter(country => {
+        return country.name.toLowerCase().includes(query);
+      })
+      : countries.value;
 });
 
 try {

@@ -10,6 +10,7 @@ This Nuxt 3 application allows users to search for countries, display three rand
 - **Random Country Display:** Shows details about three randomly selected countries and their upcoming holidays.
 - **Holiday Details:** Provides detailed information about holidays in the selected country for a specified year.
 
+Check out the [DEMO](https://670d7577dff1d50008a7a481--beamish-cendol-817b8f.netlify.app/) for more information.
 ## Architecture
 
 The application follows the Nuxt.js architecture, leveraging the Vue Composition API for state management and component structure. The application uses the following libraries and frameworks:
@@ -61,4 +62,4 @@ npm run preview
 
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+

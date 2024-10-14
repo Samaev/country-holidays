@@ -21,6 +21,11 @@ The application follows the Nuxt.js architecture, leveraging the Vue Composition
 - **ESLint and Prettier:** For maintaining code quality and formatting consistency.
 
 ## Installation
+ **Copy the Environment Variables File:**
+   Make a copy of the `.env.example` file and rename it to `.env`. This file contains the necessary environment variables for the application to run correctly.
+
+   ```bash
+   cp .env.example .env
 
 To install the dependencies, run the following command:
 

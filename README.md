@@ -1,24 +1,31 @@
-# Nuxt 3 Minimal Starter
+# International Holidays
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## Overview
 
-## Setup
+This Nuxt 3 application allows users to search for countries, display three random countries with details about their next holiday, and show holiday details for a selected country based on the chosen year. The application is built using Vue.js and utilizes various libraries for improved functionality and code quality.
 
-Make sure to install the dependencies:
+## Features
+
+- **Country Search:** Users can search for countries from a provided list.
+- **Random Country Display:** Shows details about three randomly selected countries and their upcoming holidays.
+- **Holiday Details:** Provides detailed information about holidays in the selected country for a specified year.
+
+## Architecture
+
+The application follows the Nuxt.js architecture, leveraging the Vue Composition API for state management and component structure. The application uses the following libraries and frameworks:
+
+- **Nuxt 3:** The main framework for building the application.
+- **Vue:** The underlying JavaScript framework.
+- **Vue Router:** For handling routing within the application.
+- **Bootstrap:** For styling and responsive design (via `usebootstrap`).
+- **ESLint and Prettier:** For maintaining code quality and formatting consistency.
+
+## Installation
+
+To install the dependencies, run the following command:
 
 ```bash
-# npm
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
 
 ## Development Server
 
@@ -28,14 +35,7 @@ Start the development server on `http://localhost:3000`:
 # npm
 npm run dev
 
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
+ 
 ```
 
 ## Production
@@ -46,14 +46,6 @@ Build the application for production:
 # npm
 npm run build
 
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
 ```
 
 Locally preview production build:
@@ -62,14 +54,6 @@ Locally preview production build:
 # npm
 npm run preview
 
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.

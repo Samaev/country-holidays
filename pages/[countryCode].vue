@@ -3,18 +3,21 @@ import { useRoute, useRouter } from 'vue-router';
 import { ref, watch } from 'vue';
 import { usePublicHolidays } from '~/composables/usePublicHolidays';
 
-const route = useRoute();
-const router = useRouter();
-const holidays = ref([]);
-let selectedYear = ref(new Date().getFullYear());
-
-
-if (route.query.year) {
-  selectedYear.value = parseInt(route.query.year as string);
+interface RouteParams {
+  countryCode: string;
 }
 
-const countryCode = route.params.countryCode;
+const route = useRoute();
+const router = useRouter();
 
+const holidays = ref<array[]>([]);
+const selectedYear = ref<number>(new Date().getFullYear());
+
+if (route.query.year) {
+  selectedYear.value = parseInt(route.query.year as string, 10);
+}
+
+const countryCode = (route.params as RouteParams).countryCode;
 
 async function fetchHolidays(year: number, countryCode: string) {
   try {
@@ -24,7 +27,6 @@ async function fetchHolidays(year: number, countryCode: string) {
   }
 }
 
-
 watch(selectedYear, async (newYear) => {
   await fetchHolidays(newYear, countryCode);
   await router.push({ query: { ...route.query, year: newYear } });
@@ -33,6 +35,7 @@ watch(selectedYear, async (newYear) => {
 await fetchHolidays(selectedYear.value, countryCode);
 </script>
 
+
 <template>
   <div class="container">
     <div class="card mb-3" v-for="holiday in holidays" :key="holiday.date">
@@ -40,7 +43,7 @@ await fetchHolidays(selectedYear.value, countryCode);
     </div>
 
     <nav aria-label="Year pagination" class="fixed-pagination">
-      <ul class="pagination pagination-lg d-flex justify-content-center align-items-center">  >
+      <ul class="pagination pagination-lg d-flex justify-content-center align-items-center">
         <li v-for="year in 11" :key="year" class="page-item"
             :class="{ active: selectedYear === 2020 + year - 1 }">
           <a class="page-link" href="#" @click.prevent="selectedYear = 2020 + year - 1">

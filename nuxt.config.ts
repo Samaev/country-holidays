@@ -8,7 +8,7 @@ export default defineNuxtConfig({
   modules: ['usebootstrap'],
   app: {
     head: {
-      title: "Countries Holidays",
+      title: "International Holidays",
     }
   }
 })

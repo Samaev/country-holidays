@@ -1,11 +1,19 @@
 <script setup lang="ts">
+import { PropType } from 'vue';
+
+interface Holiday {
+  date: string;
+  name: string;
+  localName: string;
+  countryCode: string;
+}
 const props = defineProps({
   holiday: {
-    type: Object,
+    type: Object as PropType<Holiday>,
     required: true
   },
   country: {
-    type: Object,
+    type: String,
     required: false
   }
 });

@@ -4,10 +4,22 @@ import {useCountries} from '~/composables/useCountries.ts';
 import {useRandomHolidays} from '~/composables/useRandomHolidays.ts';
 import HolidayCard from "~/components/HolidayCard.vue";
 
-const countries = ref([]);
-const countryWidget = ref([]);
-const searchQuery = ref('');
-const error = ref(null);
+interface Country {
+  name: string;
+  code: string; // Add other properties as needed
+}
+
+interface Holiday {
+  date: string;
+  name: string;
+  localName: string;
+  countryCode: string;
+}
+
+const countries = ref<Country[]>([]);
+const countryWidget = ref<Holiday[]>([]);
+const searchQuery = ref<string>('');
+const error = ref<string | null>(null);
 
 const filteredCountries = computed(() => {
   return countries.value.filter(country => {

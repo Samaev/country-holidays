@@ -1,16 +1,10 @@
-import { useFetch } from '#app';
-import { useRoute } from 'vue-router';
-export const usePublicHolidays = async ( year) => {
-    const route = useRoute();
-    const countryCode = route.params.countryCode;
+export const usePublicHolidays = async (year: number, countryCode: string) => {
     const url = `https://date.nager.at/api/v3/PublicHolidays/${year}/${countryCode}`;
 
-    const { data, error } = await useFetch(url);
-
-
-    if (error.value) {
-        throw new Error(`Failed to fetch holidays: ${error.value.message}`);
+    try {
+        // Use $fetch directly without importing it
+        return await $fetch(url);
+    } catch (error) {
+        throw new Error(`Failed to fetch holidays: ${error.message}`);
     }
-
-    return data.value;
 };

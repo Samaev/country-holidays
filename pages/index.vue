@@ -29,10 +29,8 @@ try {
     <div class="container-fluid row">
       <section class="cards col-3">
         <div class="cards__search">
-          <form class="d-flex" @submit.prevent>
-            <input class="form-control me-2" type="search" v-model.trim="searchQuery" placeholder="Search"
-                   aria-label="Search">
-          </form>
+          <input class="form-control" type="search" v-model.trim="searchQuery" placeholder="Search"
+                 aria-label="Search">
         </div>
         <div class="cards__list mt-2" v-if="filteredCountries.length">
           <NuxtLink v-for="country in filteredCountries" :key="country.countryCode" class="card p-2 my-1"
@@ -51,7 +49,7 @@ try {
       <section class="widget col">
         <h3 class="lead text-center">Next Holidays</h3>
         <div class="card mb-3" v-for="(holiday,index) in countryWidget" :key="index">
-         <HolidayCard :holiday=holiday />
+         <HolidayCard :holiday=holiday :country="holiday.countryName" />
         </div>
       </section>
     </div>

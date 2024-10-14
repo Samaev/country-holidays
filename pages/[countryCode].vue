@@ -2,6 +2,8 @@
 import { useRoute, useRouter } from 'vue-router';
 import { ref, watch } from 'vue';
 import { usePublicHolidays } from '~/composables/usePublicHolidays';
+import { CountryInfo } from '~/composables/useCountryInfo';
+const countryInfo = ref<CountryInfo | null>(null);
 
 interface RouteParams {
   countryCode: string;
@@ -27,6 +29,10 @@ async function fetchHolidays(year: number, countryCode: string) {
   }
 }
 
+const country = await useCountryInfo(countryCode);
+if (country) {
+  countryInfo.value = country;
+}
 watch(selectedYear, async (newYear) => {
   await fetchHolidays(newYear, countryCode);
   await router.push({ query: { ...route.query, year: newYear } });
@@ -38,6 +44,9 @@ await fetchHolidays(selectedYear.value, countryCode);
 
 <template>
   <div class="container">
+    <div class="breadcrumbs d-flex align-items-center justify-content-between my-1">
+      <h2>{{ countryInfo.officialName  }}</h2>  <h2>{{ countryInfo.region }}</h2>
+    </div>
     <div class="card mb-3" v-for="holiday in holidays" :key="holiday.name">
       <HolidayCard :holiday="holiday" :country="holiday.countryName" />
     </div>

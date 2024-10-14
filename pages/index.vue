@@ -2,6 +2,7 @@
 import {ref} from 'vue';
 import {useCountries} from '~/composables/useCountries.ts';
 import {useRandomHolidays} from '~/composables/useRandomHolidays.ts';
+import HolidayCard from "~/components/HolidayCard.vue";
 
 const countries = ref([]);
 const countryWidget = ref([]);
@@ -49,18 +50,8 @@ try {
       </section>
       <section class="widget col">
         <h3 class="lead text-center">Next Holidays</h3>
-        <div class="card mb-3" v-for="(holiday,index) of countryWidget" :key="index">
-          <div class="card-header">
-            Date: {{ holiday.date }}
-          </div>
-          <div class="card-body">
-            <h5 class="card-title">Name: {{ holiday.name }}</h5>
-            <p class="card-text">Local name: {{ holiday.localName }}</p>
-          </div>
-          <div class="card-footer d-flex justify-content-between align-items-center">
-            <div>Country:</div>
-            <button class="btn btn-primary"><NuxtLink :to="`/${holiday.countryCode}`"><span class="text-white">{{ holiday.countryName }}</span></NuxtLink></button>
-          </div>
+        <div class="card mb-3" v-for="(holiday,index) in countryWidget" :key="index">
+         <HolidayCard :holiday=holiday />
         </div>
       </section>
     </div>

@@ -38,7 +38,7 @@ await fetchHolidays(selectedYear.value, countryCode);
 
 <template>
   <div class="container">
-    <div class="card mb-3" v-for="holiday in holidays" :key="holiday.date">
+    <div class="card mb-3" v-for="holiday in holidays" :key="holiday.name">
       <HolidayCard :holiday="holiday" :country="holiday.countryName" />
     </div>
 
@@ -58,6 +58,7 @@ await fetchHolidays(selectedYear.value, countryCode);
 <style scoped>
 .fixed-pagination {
   position: fixed;
+  overflow: scroll;
   bottom: 0;
   left: 0;
   width: 100%;
